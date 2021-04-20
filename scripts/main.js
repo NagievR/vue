@@ -12,19 +12,23 @@
 const app = {
   data() {
     return {
-      
+
       product: {
         name:'Socks SB',
         date:'29.92/2019',
-        foo() {
-          setTimeout(() => {
-            this.name = 'Socks UA';
-          }, 2000)
-        },
+        // foo() {
+        //   setTimeout(() => {
+        //     this.name = 'Socks UA';
+        //   }, 2000)
+        // },
+        imageSrc: './assets/socks1.jpg',
+        inStock: true,
       }
       
     }
   }
 }
 
-Vue.createApp(app).mount('#app');
+const mountedApp = Vue.createApp(app).mount('#app');
+
+console.log(mountedApp);

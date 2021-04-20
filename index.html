@@ -10,9 +10,13 @@
 <body>
 
   <div id="app">
-    {{ product.foo() }}
     <h2>{{ product.name }}</h2>
     <div>{{ product.date }}</div>
+
+    <p v-if='product.inStock'>in stock</p>
+    <p v-else>sold out</p>
+
+    <img v-bind:src="product.imageSrc" alt="image">
   </div>
 
   <!-- import app -->
