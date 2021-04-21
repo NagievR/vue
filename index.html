@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
@@ -13,8 +14,14 @@
     <h2>{{ product.name }}</h2>
     <div>{{ product.date }}</div>
 
-    <p v-if='product.inStock'>in stock</p>
-    <p v-else>sold out</p>
+    <p 
+      v-if='product.inStock'
+      :class='[product.inStock ? active : ""]'>in stock
+    </p>
+    <p 
+      v-else>
+      sold out
+    </p>
 
     <ul 
       v-for='(detail, index) in product.details' 
@@ -31,7 +38,9 @@
       {{ variant.name }}
     </ul>
 
-    <button @click='addToCard()'>
+    <button 
+      @click='addToCard()'
+      :disabled='inStock'>
       Add to card
     </button>
     <div>card: ({{ card }})</div>
