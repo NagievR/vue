@@ -16,7 +16,27 @@
     <p v-if='product.inStock'>in stock</p>
     <p v-else>sold out</p>
 
-    <img v-bind:src="product.imageSrc" alt="image">
+    <ul 
+      v-for='(detail, index) in product.details' 
+      :key='index'
+      :style='styles'>
+      {{ detail }}
+    </ul>
+
+    <ul 
+      v-for='(variant, index) of product.variants'
+      @mouseover='updateImage(variant.src)'
+      :style="{ backgroundColor: variant.name }"
+      >
+      {{ variant.name }}
+    </ul>
+
+    <button @click='addToCard()'>
+      Add to card
+    </button>
+    <div>card: ({{ card }})</div>
+
+    <img style="height: 400px;" v-bind:src="product.imageSrc" alt="image">
   </div>
 
   <!-- import app -->
