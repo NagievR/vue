@@ -11,49 +11,19 @@
 <body>
 
   <div id="app">
-    <h2>{{ product.name }}</h2>
-    <div>{{ product.date }}</div>
-
-    <p 
-      v-if='product.inStock'
-      :class='[product.inStock ? active : ""]'>in stock
-    </p>
-    <p 
-      v-else>
-      sold out
-    </p>
-
-    <ul 
-      v-for='(detail, index) in product.details' 
-      :key='index'
-      :style='styles'>
-      {{ detail }}
-    </ul>
-
-    <ul 
-      v-for='(variant, index) of product.variants'
-      @mouseover='updateImage(variant.src)'
-      :style="{ backgroundColor: variant.name }"
-      >
-      {{ variant.name }}
-    </ul>
-
-    <button 
-      @click='addToCard()'
-      :disabled='inStock'>
-      Add to card
-    </button>
-    <div>card: ({{ card }})</div>
-
-    <img style="height: 400px;" v-bind:src="product.imageSrc" alt="image">
+    <div>cart: ({{ cart }})</div>
+    <div v-if='premium'>{{'You are a premium user'}}</div>
+    <product-display :premium='premium' @add-to-card='updateCart'></product-display>  
   </div>
 
   <!-- import app -->
-  <script src='/scripts/main.js'></script>
-
+  <script src='./scripts/main.js'></script>
+  <script src="./scripts/prodDisplay.js"></script>  
+  <script src="./scripts/productDetails.js"></script>
+  
   <!-- mount app -->
   <script>
-    // const mountedApp = app.mount('#app');
+    const mountedApp = app.mount('#app');
   </script>
 
 </body>
